@@ -89,7 +89,7 @@ Copy code
         </section>
     </main>
     <footer>
-        <p>Copyright © 2023 Simple Login and Calculator. All rights reserved.</p>
+        <p>Copyright © 2024 Simple Calculator. All rights reserved.</p>
     </footer>
     <script>
         let username = "";
