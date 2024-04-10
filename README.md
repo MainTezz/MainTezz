@@ -6,6 +6,8 @@
     <title>Login</title>
     <style>
         #calculator {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
             display: none;
         }
 
@@ -17,8 +19,10 @@
             display: none;
         }
 
-        #calculator-success {
-            display: none;
+        #login-success.visible,
+        #calculator.visible {
+            opacity: 1;
+            display: block;
         }
     </style>
 </head>
@@ -39,7 +43,7 @@
                 <button type="submit">Login</button>
             </form>
         </section>
-        <section id="login-success">
+        <section id="login-success" class="visible">
             <h2>Successfully logged in!</h2>
             <button onclick="showCalculator();">Go to Calculator</button>
         </section>
@@ -50,34 +54,4 @@
         </section>
     </main>
     <footer>
-        <p>Copyright © 2023 Simple Login and Calculator. All rights reserved.</p>
-    </footer>
-    <script>
-        function login() {
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-
-            // Replace this with your actual authentication logic
-            if (username === "admin" && password === "password") {
-                document.getElementById("login-form").style.display = "none";
-                document.getElementById("login-success").style.display = "block";
-                return false;
-            } else {
-                alert("Invalid credentials");
-                return false;
-            }
-        }
-
-        function showCalculator() {
-            document.getElementById("login-success").style.display = "none";
-            document.getElementById("calculator").style.display = "block";
-        }
-
-        function calculate() {
-            const input = document.getElementById("calculator-input").value;
-            const result = eval(input);
-            document.getElementById("calculator-result").innerText = "Result: " + result;
-        }
-    </script>
-</body>
-</html>
+        <p>Copyright © 2
