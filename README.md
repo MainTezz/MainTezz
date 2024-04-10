@@ -1,8 +1,3 @@
-
-Edit
-Run
-Full Screen
-Copy code
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,10 +64,11 @@ Copy code
             <button onclick="showCalculator();">Go to Calculator</button>
             <button onclick="showSignup();">Sign Up</button>
         </section>
-        <section id="calculator">
+        <section id="calculator" class="visible">
             <h2>Enter an expression to calculate</h2>
-            <input type="text" id="calculator-input" oninput="calculate();">
-            <p id="calculator-result"></p>
+            <input type="text" id="expression" oninput="solveAndCopy();">
+            <input type="text" id="result" readonly>
+            <button onclick="copyResult();">Copy Result</button>
         </section>
         <section id="signup" class="visible">
             <h2>Sign Up</h2>
@@ -89,7 +85,7 @@ Copy code
         </section>
     </main>
     <footer>
-        <p>Copyright © 2024 Simple Calculator. All rights reserved.</p>
+        <p>Copyright © 2023 Simple Login and Calculator. All rights reserved.</p>
     </footer>
     <script>
         let username = "";
@@ -121,6 +117,20 @@ Copy code
             const input = document.getElementById("calculator-input").value;
             const result = eval(input);
             document.getElementById("calculator-result").innerText = "Result: " + result;
+        }
+
+        function solveAndCopy() {
+            let expression = document.getElementById("expression").value;
+            let expressionCleaned = expression.replace(/,/g, '.').replace(/av/g, '').replace(/til/g, '').replace(/%/g, '/100').replace(/−/g, '-').replace(/⋅/g, '').replace(/:/g, '/').replace(/\?/g, '').replace(/[a-zA-Z]/g, '');
+            let result = solveExpression(expressionCleaned);
+            document.getElementById("result").value = result;
+        }
+
+        function copyResult() {
+            let resultField = document.getElementById("result");
+            resultField.select();
+            document.execCommand("copy");
+            alert("Result copied to clipboard: " + resultField.value);
         }
 
         function showSignup() {
