@@ -29,6 +29,17 @@
             opacity: 1;
             display: block;
         }
+
+        #login-form,
+        #signup {
+            transition: opacity 0.5s ease-in-out;
+            opacity: 1;
+        }
+
+        #login-form.fade-out,
+        #signup.fade-out {
+            opacity: 0;
+        }
     </style>
 </head>
 <body>
@@ -69,7 +80,7 @@
 
                 <button type="submit">Sign Up</button>
             </form>
-            <button onclick="showLoginSuccess();">Back to Login</button>
+            <button onclick="showLogin();">Back to Login</button>
         </section>
     </main>
     <footer>
@@ -82,9 +93,9 @@
 
             // Replace this with your actual authentication logic
             if (username === "admin" && password === "password") {
-                document.getElementById("login-form").style.display = "none";
-                document.getElementById("login-success").style.display = "block";
-                document.getElementById("signup").style.display = "none";
+                document.getElementById("login-form").classList.add("fade-out");
+                document.getElementById("login-success").classList.add("visible");
+                document.getElementById("signup").classList.add("visible");
                 return false;
             } else {
                 alert("Invalid credentials");
@@ -93,8 +104,10 @@
         }
 
         function showCalculator() {
-            document.getElementById("login-success").style.display = "none";
-            document.getElementById("calculator").style.display = "block";
+            document.getElementById("login-success").classList.remove("visible");
+            document.getElementById("calculator").classList.add("visible");
+            document.getElementById("signup").classList.add("visible");
+document.getElementById("login-form").classList.add("fade-out");
         }
 
         function calculate() {
@@ -104,14 +117,16 @@
         }
 
         function showSignup() {
-            document.getElementById("login-success").style.display = "none";
-            document.getElementById("signup").style.display = "block";
+            document.getElementById("login-success").classList.remove("visible");
+            document.getElementById("signup").classList.add("visible");
+            document.getElementById("login-form").classList.add("fade-out");
         }
 
-        function showLoginSuccess() {
-            document.getElementById("login-success").style.display = "block";
-            document.getElementById("signup").style.display = "none";
-            document.getElementById("calculator").style.display = "none";
+        function showLogin() {
+            document.getElementById("login-form").classList.remove("fade-out");
+            document.getElementById("signup").classList.remove("visible");
+            document.getElementById("calculator").classList.remove("visible");
+            document.getElementById("login-success").classList.remove("visible");
         }
 
         function signup() {
@@ -121,8 +136,8 @@
             // Replace this with your actual signup logic
             if (newUsername !== "admin" && newPassword !== "password") {
                 alert("Sign up successful!");
-                document.getElementById("signup").style.display = "none";
-                document.getElementById("login-form").style.display = "block";
+                document.getElementById("signup").classList.remove("visible");
+                document.getElementById("login-form").classList.remove("fade-out");
                 return false;
             } else {
                 alert("Sign up failed. Please choose a different username and password.");
