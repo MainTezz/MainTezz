@@ -1,3 +1,8 @@
+
+Edit
+Run
+Full Screen
+Copy code
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,7 +65,7 @@
             </form>
         </section>
         <section id="login-success" class="visible">
-            <h2>Successfully logged in!</h2>
+            <h2></h2>
             <button onclick="showCalculator();">Go to Calculator</button>
             <button onclick="showSignup();">Sign Up</button>
         </section>
@@ -87,12 +92,14 @@
         <p>Copyright © 2023 Simple Login and Calculator. All rights reserved.</p>
     </footer>
     <script>
-        function login() {
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
+        let username = "";
+        let password = "";
 
-            // Replace this with your actual authentication logic
-            if (username === "admin" && password === "password") {
+        function login() {
+            const inputUsername = document.getElementById("username").value;
+            const inputPassword = document.getElementById("password").value;
+
+            if (inputUsername === username && inputPassword === password) {
                 document.getElementById("login-form").classList.add("fade-out");
                 document.getElementById("login-success").classList.add("visible");
                 document.getElementById("signup").classList.add("visible");
@@ -107,7 +114,7 @@
             document.getElementById("login-success").classList.remove("visible");
             document.getElementById("calculator").classList.add("visible");
             document.getElementById("signup").classList.add("visible");
-document.getElementById("login-form").classList.add("fade-out");
+            document.getElementById("login-form").classList.add("fade-out");
         }
 
         function calculate() {
@@ -133,8 +140,10 @@ document.getElementById("login-form").classList.add("fade-out");
             const newUsername = document.getElementById("new-username").value;
             const newPassword = document.getElementById("new-password").value;
 
-            // Replace this with your actual signup logic
-            if (newUsername !== "admin" && newPassword !== "password") {
+            if (newUsername !== "" && newPassword !== "") {
+                username = newUsername;
+                password = newPassword;
+
                 alert("Sign up successful!");
                 document.getElementById("signup").classList.remove("visible");
                 document.getElementById("login-form").classList.remove("fade-out");
