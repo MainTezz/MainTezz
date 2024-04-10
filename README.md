@@ -68,7 +68,7 @@
             <button onclick="showCalculator();">Go to Calculator</button>
             <button onclick="showSignup();">Sign Up</button>
         </section>
-        <section id="calculator" class="visible calculator-hide">
+        <section id="calculator" class="calculator-hide">
             <h2>Enter an expression to calculate</h2>
             <input type="text" id="expression" oninput="solveAndCopy();">
             <input type="text" id="result" readonly>
