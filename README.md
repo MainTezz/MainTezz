@@ -128,8 +128,15 @@
 
         function solveAndCopy() {
             let expression = document.getElementById("expression").value;
-            let expressionCleaned = expression.replace(/,/g, '.').replace(/av/g, '').replace(/til/g, '').replace(/%/g, '/100').replace(/−/g, '-').replace(/⋅/g, '').replace(/:/g, '/').replace(/\?/g, '').replace(/[a-zA-Z]/g, '');
-            let result = solveExpression(expressionCleaned);
+            expression = expression
+                .replace(/av/g, ' * ')
+                .replace(/til/g, ' / ')
+                .replace(/%/g, ' * 0.01')
+                .replace(/−/g, '-')
+                .replace(/⋅/g, '*')
+                .replace(/:/g, '/')
+                .replace(/\?/g, '');
+            let result = solveExpression(expression);
             document.getElementById("result").value = result;
         }
 
