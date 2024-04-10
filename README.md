@@ -16,7 +16,7 @@
         }
 
         #login-form {
-            display: block;
+            display: none;
         }
 
         #login-success {
@@ -24,7 +24,7 @@
         }
 
         #signup {
-            display: none;
+            display: block;
         }
 
         #login-success.visible,
@@ -66,7 +66,6 @@
         <section id="login-success" class="visible">
             <h2></h2>
             <button onclick="showCalculator();">Go to Calculator</button>
-            <button onclick="showSignup();">Sign Up</button>
         </section>
         <section id="calculator" class="calculator-hide">
             <h2>Enter an expression to calculate</h2>
