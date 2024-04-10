@@ -180,12 +180,28 @@
                 alert("Sign up successful!");
                 document.getElementById("signup").classList.remove("visible");
                 document.getElementById("login-form").classList.remove("fade-out");
-                return false;
+                document.getElementById("login-form").classList.add("visible");
+                document.getElementById("signup-form").reset();
+                document.getElementById("signup-success").classList.add("visible");
             } else {
-                alert("Sign up failed. Please choose a different username and password.");
-                return false;
+                alert("Please enter a valid username and password");
+                return false-form").classList.remove("fade-;
             }
+       out");
+                document }
+    </script.getElementById("login->
+</body>form").classList.
+</html>
+```add("visible");
+                document.getElementById("
+
+Please note thatsignup-form"). the "solveExpression" function in the code abovereset();
+                document.getElementById("signup uses the "eval"-success").classList function to calculate the result..add("visible");
+            While this is convenient and powerful, it also presents potential security } else {
+                alert risks, as it("Please enter a valid allows the execution of arbitrary code username and password");
+                return false;
+. If you are concerned            }
         }
-    </script>
-</body>
+ about security, you should consider    </script>
+ using a more secure and</body>
 </html>
