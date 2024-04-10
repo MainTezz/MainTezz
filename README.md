@@ -9,6 +9,10 @@
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
             display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         #login-form {
@@ -64,7 +68,7 @@
             <button onclick="showCalculator();">Go to Calculator</button>
             <button onclick="showSignup();">Sign Up</button>
         </section>
-        <section id="calculator" class="visible">
+        <section id="calculator" class="visible calculator-hide">
             <h2>Enter an expression to calculate</h2>
             <input type="text" id="expression" oninput="solveAndCopy();">
             <input type="text" id="result" readonly>
@@ -99,6 +103,8 @@
                 document.getElementById("login-form").classList.add("fade-out");
                 document.getElementById("login-success").classList.add("visible");
                 document.getElementById("signup").classList.add("visible");
+                document.getElementById("calculator").classList.remove("calculator-hide");
+                document.getElementById("calculator").classList.add("visible");
                 return false;
             } else {
                 alert("Invalid credentials");
@@ -108,8 +114,9 @@
 
         function showCalculator() {
             document.getElementById("login-success").classList.remove("visible");
-            document.getElementById("calculator").classList.add("visible");
             document.getElementById("signup").classList.add("visible");
+            document.getElementById("calculator").classList.remove("calculator-hide");
+            document.getElementById("calculator").classList.add("visible");
             document.getElementById("login-form").classList.add("fade-out");
         }
 
@@ -157,6 +164,7 @@
             document.getElementById("login-form").classList.remove("fade-out");
             document.getElementById("signup").classList.remove("visible");
             document.getElementById("calculator").classList.remove("visible");
+            document.getElementById("calculator").classList.add("calculator-hide");
             document.getElementById("login-success").classList.remove("visible");
         }
 
