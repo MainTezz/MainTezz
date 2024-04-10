@@ -19,8 +19,13 @@
             display: none;
         }
 
+        #signup {
+            display: none;
+        }
+
         #login-success.visible,
-        #calculator.visible {
+        #calculator.visible,
+        #signup.visible {
             opacity: 1;
             display: block;
         }
@@ -44,14 +49,4 @@
             </form>
         </section>
         <section id="login-success" class="visible">
-            <h2>Successfully logged in!</h2>
-            <button onclick="showCalculator();">Go to Calculator</button>
-        </section>
-        <section id="calculator">
-            <h2>Enter an expression to calculate</h2>
-            <input type="text" id="calculator-input" oninput="calculate();">
-            <p id="calculator-result"></p>
-        </section>
-    </main>
-    <footer>
-        <p>Copyright © 2
+            <h2>Successfully logged in!</h
