@@ -48,10 +48,10 @@
 </head>
 <body>
     <header>
-        <h1>Login</h1>
+        <h1></h1>
     </header>
     <main>
-        <section id="login-form">
+        <section id="login-form" class="login-hide">
             <h2>Enter your credentials</h2>
             <form action="#" method="post" onsubmit="return login();">
                 <label for="username">Username:</label>
@@ -74,7 +74,7 @@
             <input type="text" id="result" readonly>
             <button onclick="copyResult();">Copy Result</button>
         </section>
-        <section id="signup" class="visible">
+        <section id="signup" class="visible signup-hide">
             <h2>Sign Up</h2>
             <form action="#" method="post" onsubmit="return signup();">
                 <label for="new-username">Username:</label>
@@ -102,7 +102,7 @@
             if (inputUsername === username && inputPassword === password) {
                 document.getElementById("login-form").classList.add("fade-out");
                 document.getElementById("login-success").classList.add("visible");
-                document.getElementById("signup").classList.add("visible");
+                document.getElementById("signup").classList.remove("visible");
                 document.getElementById("calculator").classList.remove("calculator-hide");
                 document.getElementById("calculator").classList.add("visible");
                 return false;
@@ -114,7 +114,7 @@
 
         function showCalculator() {
             document.getElementById("login-success").classList.remove("visible");
-            document.getElementById("signup").classList.add("visible");
+            document.getElementById("signup").classList.remove("visible");
             document.getElementById("calculator").classList.remove("calculator-hide");
             document.getElementById("calculator").classList.add("visible");
             document.getElementById("login-form").classList.add("fade-out");
@@ -158,6 +158,8 @@
             document.getElementById("login-success").classList.remove("visible");
             document.getElementById("signup").classList.add("visible");
             document.getElementById("login-form").classList.add("fade-out");
+            document.getElementById("calculator").classList.add("calculator-hide");
+            document.getElementById("calculator").classList.remove("visible");
         }
 
         function showLogin() {
