@@ -113,10 +113,17 @@
             document.getElementById("login-form").classList.add("fade-out");
         }
 
-        function calculate() {
-            const input = document.getElementById("calculator-input").value;
-            const result = eval(input);
-            document.getElementById("calculator-result").innerText = "Result: " + result;
+        function solveExpression(expression) {
+            try {
+                let result = eval(expression);
+                if (result % 1 === 0) {
+                    return result.toString();
+                } else {
+                    return result.toFixed(2);
+                }
+            } catch (error) {
+                return error.toString();
+            }
         }
 
         function solveAndCopy() {
