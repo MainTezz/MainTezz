@@ -4,26 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome Back!</h1>
-        <form id="login-form">
-            <label for="email">Email address</label>
-            <input type="email" id="email" name="email" required>
+    <header>
+        <h1>Login</h1>
+    </header>
+    <main>
+        <section id="login-form">
+            <h2>Enter your credentials</h2>
+            <form action="calculator.html" method="post">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
 
-            <label for="password">Password</label>
-            <div class="password-container">
+                <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
-                <span class="show-password-btn">Show</span>
-            </div>
 
-            <button type="submit">Sign In</button>
-        </form>
-        <div class="signup-link">
-            Don't have an account? <a href="signup.html">Create one</a>
-        </div>
-    </div>
+                <button type="submit">Login</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>Copyright © 2023 Simple Login. All rights reserved.</p>
+    </footer>
 </body>
 </html>
