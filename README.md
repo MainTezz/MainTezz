@@ -14,6 +14,8 @@
             padding: 80px;
             background-color: white;
             border-radius: 15px;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 1;
         }
         h2 {
             text-align: center;
@@ -48,21 +50,6 @@
             background-color: grey;
         }
     </style>
-</head>
-<body>
-    <div class="login">
-        <form id="login" method="post" action="login.php">
-            <h2>Login Page</h2>
-            <label><b>User Name</b></label><br>
-            <input type="text" name="Uname" id="Uname" placeholder="Username" required><br><br>
-            <label><b>Password</b></label><br>
-            <input type="Password" name="Pass" id="Pass" placeholder="Password" required><br><br>
-            <input type="button" name="log" id="log" value="Log In Here" onclick="validateForm()"><br><br>
-            <input type="checkbox" id="check">
-            <span>Remember me</span><br><br>
-            Forgot <a href="#">Password</a><br>
-        </form>
-    </div>
     <script>
         function validateForm() {
             var username = document.getElementById("Uname").value;
@@ -71,8 +58,28 @@
                 alert("Please enter your username and password.");
                 return false;
             }
-            document.getElementById("login").submit();
+            document.getElementById("login").style.opacity = "0";
+            setTimeout(function() {
+                window.location.href = "calculator.html";
+            }, 500);
+            return true;
         }
     </script>
+</head>
+<body>
+    <div class="login" id="login">
+        <form id="loginForm" method="post" action="login.php" onsubmit="return validateForm()">
+            <h2>Login Page</h2>
+            <label><b>User Name</b></label><br>
+            <input type="text" name="Uname" id="Uname" placeholder="Username" required><br><br>
+            <label><b>Password</b></label><br>
+            <input type="Password" name="Pass" id="Pass" placeholder="Password" required><br><br>
+            <input type="submit" name="log" id="log" value="Log In Here">
+            <br><br>
+            <input type="checkbox" id="check">
+            <span>Remember me</span><br><br>
+            Forgot <a href="#">Password</a><br>
+        </form>
+    </div>
 </body>
 </html>
