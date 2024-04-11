@@ -1,207 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login Form</title>
     <style>
-        #calculator {
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        body {
+            background-color: #6abadeba;
+            font-family: 'Arial';
         }
-
-        #login-form {
-            display: none;
+        .login {
+            width: 382px;
+            overflow: hidden;
+            margin: 20px auto;
+            padding: 80px;
+            background-color: white;
+            border-radius: 15px;
         }
-
-        #login-success {
-            display: none;
+        h2 {
+            text-align: center;
+            color: #277582;
+            padding: 20px;
         }
-
-        #signup {
-            display: block;
+        label {
+            color: #08ffd1;
+            font-size: 17px;
         }
-
-        #login-success.visible,
-        #calculator.visible,
-        #signup.visible {
-            opacity: 1;
-            display: block;
+        input[type="text"], input[type="password"], input[type="button"] {
+            width: 300px;
+            height: 30px;
+            border: none;
+            border-radius: 3px;
+            padding-left: 8px;
         }
-
-        #login-form,
-        #signup {
-            transition: opacity 0.5s ease-in-out;
-            opacity: 1;
+        #log {
+            width: 300px;
+            height: 30px;
+            border: none;
+            border-radius: 17px;
+            padding-left: 7px;
+            color: blue;
         }
-
-        #login-form.fade-out,
-        #signup.fade-out {
-            opacity: 0;
+        span {
+            color: white;
+            font-size: 17px;
+        }
+        a {
+            float: right;
+            background-color: grey;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1></h1>
-    </header>
-    <main>
-        <section id="login-form" class="login-hide">
-            <h2>Enter your credentials</h2>
-            <form action="#" method="post" onsubmit="return login();">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-
-                <button type="submit">Login</button>
-            </form>
-        </section>
-        <section id="login-success" class="visible">
-            <h2></h2>
-            <button onclick="showCalculator();">Go to Calculator</button>
-        </section>
-        <section id="calculator" class="calculator-hide">
-            <h2>Enter an expression to calculate</h2>
-            <input type="text" id="expression" oninput="solveAndCopy();">
-            <input type="text" id="result" readonly>
-            <button onclick="copyResult();">Copy Result</button>
-        </section>
-        <section id="signup" class="visible signup-hide">
-            <h2>Sign Up</h2>
-            <form action="#" method="post" onsubmit="return signup();">
-                <label for="new-username">Username:</label>
-                <input type="text" id="new-username" name="new-username" required>
-
-                <label for="new-password">Password:</label>
-                <input type="password" id="new-password" name="new-password" required>
-
-                <button type="submit">Sign Up</button>
-            </form>
-            <button onclick="showLogin();">Back to Login</button>
-        </section>
-    </main>
-    <footer>
-        <p>Copyright © 2023 Simple Login and Calculator. All rights reserved.</p>
-    </footer>
-    <script>
-        let username = "";
-        let password = "";
-
-        function login() {
-            const inputUsername = document.getElementById("username").value;
-            const inputPassword = document.getElementById("password").value;
-
-            if (inputUsername === username && inputPassword === password) {
-                document.getElementById("login-form").classList.add("fade-out");
-                document.getElementById("login-success").classList.add("visible");
-                document.getElementById("signup").classList.remove("visible");
-                document.getElementById("calculator").classList.remove("calculator-hide");
-                document.getElementById("calculator").classList.add("visible");
-                return false;
-            } else {
-                alert("Invalid credentials");
-                return false;
-            }
-        }
-
-        function showCalculator() {
-            document.getElementById("login-success").classList.remove("visible");
-            document.getElementById("signup").classList.remove("visible");
-            document.getElementById("calculator").classList.remove("calculator-hide");
-            document.getElementById("calculator").classList.add("visible");
-            document.getElementById("login-form").classList.add("fade-out");
-        }
-
-        function solveExpression(expression) {
-            try {
-                let result = eval(expression);
-                if (result % 1 === 0) {
-                    return result.toString();
-                } else {
-                    return result.toFixed(2);
-                }
-            } catch (error) {
-                return error.toString();
-            }
-        }
-
-        function solveAndCopy() {
-            let expression = document.getElementById("expression").value;
-            expression = expression
-                .replace(/av/g, ' * ')
-                .replace(/til/g, ' / ')
-                .replace(/%/g, ' * 0.01')
-                .replace(/−/g, '-')
-                .replace(/⋅/g, '*')
-                .replace(/:/g, '/')
-                .replace(/\?/g, '');
-            let result = solveExpression(expression);
-            document.getElementById("result").value = result;
-        }
-
-        function copyResult() {
-            let resultField = document.getElementById("result");
-            resultField.select();
-            document.execCommand("copy");
-            alert("Result copied to clipboard: " + resultField.value);
-        }
-
-        function showSignup() {
-            document.getElementById("login-success").classList.remove("visible");
-            document.getElementById("signup").classList.add("visible");
-            document.getElementById("login-form").classList.add("fade-out");
-            document.getElementById("calculator").classList.add("calculator-hide");
-            document.getElementById("calculator").classList.remove("visible");
-        }
-
-        function showLogin() {
-            document.getElementById("login-form").classList.remove("fade-out");
-            document.getElementById("signup").classList.remove("visible");
-            document.getElementById("calculator").classList.remove("visible");
-            document.getElementById("calculator").classList.add("calculator-hide");
-            document.getElementById("login-success").classList.remove("visible");
-        }
-
-        function signup() {
-            const newUsername = document.getElementById("new-username").value;
-            const newPassword = document.getElementById("new-password").value;
-
-            if (newUsername !== "" && newPassword !== "") {
-                username = newUsername;
-                password = newPassword;
-
-                alert("Sign up successful!");
-                document.getElementById("signup").classList.remove("visible");
-                document.getElementById("login-form").classList.remove("fade-out");
-                document.getElementById("login-form").classList.add("visible");
-                document.getElementById("signup-form").reset();
-                document.getElementById("signup-success").classList.add("visible");
-            } else {
-                alert("Please enter a valid username and password");
-                return false-form").classList.remove("fade-;
-            }
-       out");
-                document }
-    </script.getElementById("login->
-</body>form").classList.
-</html>
-```add("visible");
-                document.getElementById("
-
-Please note thatsignup-form"). the "solveExpression" function in the code abovereset();
-                document.getElementById("signup uses the "eval"-success").classList function to calculate the result..add("visible");
-            While this is convenient and powerful, it also presents potential security } else {
-                alert risks, as it("Please enter a valid allows the execution of arbitrary code username and password");
-                return false;
-. If you are concerned            }
-        }
- about security, you should consider    </script>
- using a more secure and</body>
+    <div class="login">
+        <form id="login" method="get" action="login.php">
+            <h2>Login Page</h2>
+            <label><b>User Name</b></label><br>
+            <input type="text" name="Uname" id="Uname" placeholder="Username"><br><br>
+            <label><b>Password</b></label><br>
+            <input type="Password" name="Pass" id="Pass" placeholder="Password"><br><br>
+            <input type="button" name="log" id="log" value="Log In Here"><br><br>
+            <input type="checkbox" id="check">
+            <span>Remember me</span><br><br>
+            Forgot <a href="#">Password</a><br>
+        </form>
+    </div>
+</body>
 </html>
