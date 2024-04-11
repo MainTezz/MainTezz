@@ -1,85 +1,72 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login Form</title>
+    <title>Calculator</title>
     <style>
         body {
             background-color: #6abadeba;
             font-family: 'Arial';
         }
-        .login {
-            width: 382px;
+        .calculator {
+            width: 300px;
             overflow: hidden;
             margin: 20px auto;
-            padding: 80px;
+            padding: 30px;
             background-color: white;
             border-radius: 15px;
-            transition: opacity 0.5s ease-in-out;
-            opacity: 1;
         }
-        h2 {
-            text-align: center;
-            color: #277582;
-            padding: 20px;
-        }
-        label {
-            color: #08ffd1;
-            font-size: 17px;
-        }
-        input[type="text"], input[type="password"], input[type="button"] {
+        input[type="text"], input[type="button"] {
             width: 300px;
             height: 30px;
             border: none;
             border-radius: 3px;
             padding-left: 8px;
         }
-        #log {
-            width: 300px;
-            height: 30px;
+        button {
+            width: 50px;
+            height: 50px;
             border: none;
-            border-radius: 17px;
-            padding-left: 7px;
-            color: blue;
-        }
-        span {
+            border-radius: 25px;
             color: white;
-            font-size: 17px;
-        }
-        a {
-            float: right;
-            background-color: grey;
+            background-color: #08ffd1;
+            font-size: 20px;
+            cursor: pointer;
         }
     </style>
     <script>
-        function validateForm() {
-            var username = document.getElementById("Uname").value;
-            var password = document.getElementById("Pass").value;
-            if (username == "" || password == "") {
-                alert("Please enter your username and password.");
-                return false;
+        function calculate(op, a, b) {
+            if (op === "+") {
+                return a + b;
+            } else if (op === "-") {
+                return a - b;
+            } else if (op === "*") {
+                return a * b;
+            } else if (op === "/") {
+                return a / b;
             }
-            document.getElementById("login").style.opacity = "0";
-            setTimeout(function() {
-                window.location.href = "calculator.html";
-            }, 500);
-            return true;
+        }
+        function solve() {
+            var a = parseFloat(document.getElementById("A").value);
+            var b = parseFloat(document.getElementById("B").value);
+            var op = document.getElementById("Op").value;
+            var result = calculate(op, a, b);
+            document.getElementById("Result").value = result;
         }
     </script>
 </head>
 <body>
-    <div class="login" id="login">
-        <form id="loginForm" method="post" action="login.php" onsubmit="return validateForm()">
-            <h2>Login Page</h2>
-            <label><b>User Name</b></label><br>
-            <input type="text" name="Uname" id="Uname" placeholder="Username" required><br><br>
-            <label><b>Password</b></label><br>
-            <input type="Password" name="Pass" id="Pass" placeholder="Password" required><br><br>
-            <input type="submit" name="log" id="log" value="Log In Here">
-            <br><br>
-            <input type="checkbox" id="check">
-            <span>Remember me</span><br><br>
-            Forgot <a href="#">Password</a><br>
-        </form>
+    <div class="calculator">
+        <h2>Calculator</h2>
+        <input type="text" id="A" placeholder="Enter first number"><br><br>
+        <input type="text" id="B" placeholder="Enter second number"><br><br>
+        <select id="Op">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select><br><br>
+        <input type="button" value="Calculate" onclick="solve()"><br><br>
+        <input type="text" id="Result" readonly><br><br>
     </div>
 </body>
 </html>
